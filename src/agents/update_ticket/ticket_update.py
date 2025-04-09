@@ -18,11 +18,14 @@ async  def update_tikcet(state:State):
 
 
     issue_key = extract_issue_key(state["input"])
+    await websocket.send_text(json.dumps({"status":issue_key}))
 
-    if not issue_key:
+    if  (issue_key == False):
         print("Error: No valid issue key found in the query.")
+        await websocket.send_text(json.dumps({"status": "Error: No valid issue key found in the query."}))
 
         return {"input":state["input"],"output":"Key is not entered"}
+
     else:
 
         check=validate_key(issue_key)
@@ -43,5 +46,5 @@ async  def update_tikcet(state:State):
             if(result):
                 await websocket.send_text(json.dumps({"status":"The update was successful!"}))
             else:
-                await websocket.send_text(json.dumps({"status":result}))
+                await websocket.send_text(json.dumps({"status":"Enter a valid ticket number."}))
     return {"input":state["input"],"output":result}

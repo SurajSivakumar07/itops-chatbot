@@ -28,18 +28,23 @@ sample_queries:
       - what you can do
       - what you're capable of
 
-#  - type: jira related
-#    examples:
-#      - how do I create a ticket
-#      - my api is not working
-#      - database is down
-#      - server crashed
-#      - can't access the application
-#      - need to reset password
-#      - update ticket status
-#      - assign issue to team
-#      - network connectivity issues
-#      - email server problems
+  - type: jira related
+    examples:
+      - how do I create a ticket
+      - my api is not working
+      - database is down
+      - server crashed
+      - can't access the application
+      - need to reset password
+      - update ticket status
+      - assign issue to team
+      - network connectivity issues
+      - email server problems
+      - 10204 update ticket priority to high
+      - change ticket 10204 priority
+      - set priority of ticket 10204 to high
+      - update priority of ticket
+
 
   - type: off topic
     examples:

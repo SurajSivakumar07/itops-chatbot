@@ -83,13 +83,11 @@ async def websocket_endpoint(websocket: WebSocket):
             if intent == "greeting":
                 message = intent_config["messages"]["bot introduction"]
                 await websocket.send_text(json.dumps({"status": message}))
-            elif intent == "jira related":
-                message = intent_config["messages"]["jira information"]
-                await websocket.send_text(json.dumps({"status": message}))
+
             elif intent == "off topic":
                 message = intent_config["messages"]["off topic message"]
                 await websocket.send_text(json.dumps({"status": message}))
-            else:
+            elif(intent =="unknown" or intent == "jira related"):
                 # Use Guardrails for fallback
                 try:
                     guardrails_response = await llm_rails.generate_async(prompt=data)

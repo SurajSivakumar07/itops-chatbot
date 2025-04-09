@@ -34,7 +34,7 @@ def extract_issue_key(user_query):
 
 
     match = re.search(r'\b\d+\b', user_query)  # Matches any numeric issue key
-    return match.group() if match else None
+    return match.group() if match else False
 
 
 def extract_issue_details(user_query):
@@ -148,5 +148,5 @@ def update_jira_issue(issue_key, summary=None, description=None, priority=None):
         print(f"Issue {issue_key} updated successfully!")
     else:
         print(f"Failed to update issue: {response.status_code}, {response.text}")
-        return response.text
+        return False
 
